@@ -157,6 +157,7 @@ export function fromEditorConfig(
 	if (resolved.tabSize === 'tab') {
 		resolved.tabSize = config.tab_width
 	}
+	const ec = workspace.getConfiguration('editorconfig')
 	return {
 		...(config.indent_style === 'tab' ||
 		config.indent_size === 'tab' ||
@@ -166,7 +167,9 @@ export function fromEditorConfig(
 			  }
 			: {}),
 		tabSize:
-			resolved.tabSize && resolved.tabSize >= 0
+			!ec.get<boolean>('ignoreTabSize') &&
+			resolved.tabSize &&
+			resolved.tabSize >= 0
 				? resolved.tabSize
 				: defaults.tabSize,
 	}

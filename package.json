@@ -54,6 +54,11 @@
           "type": "string",
           "default": "default",
           "description": "If generateAuto is false, this template path will be used for each newly-generated .editorconfig file."
+        },
+        "editorconfig.ignoreTabSize": {
+          "type": "boolean",
+          "default": false,
+          "description": "Ignores the tab_size property if present in a .editorconfig file."
         }
       }
     },
